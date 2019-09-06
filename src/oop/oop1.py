@@ -20,4 +20,19 @@
 
 
 class Vehicle:
+    """
+    This is the base class for this inheritance chain
+    """
+    pass
+
+
+class FlightVehicle(Vehicle):
+    pass
+
+
+class Starship(FlightVehicle):
+    pass
+
+
+class Airplane(FlightVehicle):
     pass
