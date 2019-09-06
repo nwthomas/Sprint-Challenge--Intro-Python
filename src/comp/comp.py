@@ -1,6 +1,7 @@
 # The following list comprehension exercises will make use of the
 # defined Human class.
 from math import sqrt
+from re import compile
 
 
 class Human:
@@ -40,7 +41,8 @@ print(b)
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
-c = []
+reg = compile("[C-G]")
+c = [h.name for h in humans if reg.match(h.name[0])]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
