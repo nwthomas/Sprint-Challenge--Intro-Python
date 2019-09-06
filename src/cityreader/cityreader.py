@@ -42,7 +42,6 @@ def cityreader(cities=[]):
                 continue
             else:
                 cities.append(City(row[0], float(row[3]), float(row[4])))
-
     return cities
 
 
@@ -82,14 +81,34 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+point1 = input(
+    "Please input a first point [latitude] [longitude]: ").strip().split(" ")
+point2 = input(
+    "Please input a second point [latitude] [longitude]: ").strip().split(" ")
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
     within = []
 
-    # TODO Ensure that the lat and lon valuse are all floats
+    # TODO Ensure that the lat and lon values are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
+    try:
+        cities_list = []
+        maxLat = max(float(lat1), float(lat2))
+        minLat = min(float(lat1), float(lat2))
+        maxLon = max(float(lon1), float(lon2))
+        minLon = min(float(lon1), float(lon2))
+        for c in cities:
+            if c.lat <= maxLat and c.lat >= minLat and c.lon <= maxLon and c.lon >= minLon:
+                cities_list.append(c)
+        return cities_list
+    except:
+        return "You must input valid numbers for your latitude and longitude"
 
     return within
+
+
+contained_cities = cityreader_stretch(
+    point1[0], point1[1], point2[0], point2[1], cities)
